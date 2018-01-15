@@ -5,8 +5,8 @@
   "main": "api/index.js",
   "scripts": {
     "start": "nodemon ./api/index.js --exec babel-node",
-    "build": "babel ./api -d build",
-    "serve": "node ./build/index.js",
+    "build": "babel api -d build/api",
+    "serve": "node ./build/api/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
