@@ -20,6 +20,11 @@ routes.get('/', function (req, res) {
     response_type: "ephemeral",
     text: "Hey, what up?"
   });
+}).post('/test', function (req, res) {
+  res.status(200).json({
+    response_type: "ephemeral",
+    text: "Hey, what up?"
+  });
 });
 
 exports.routes = routes;
