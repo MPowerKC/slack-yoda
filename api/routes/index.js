@@ -21,7 +21,7 @@ routes
       text: "Hey, what up?"
     });
   })
-  .post('/test', (req, res) => {
+  .post('/command/resource', (req, res) => {
     let results = resources.reduce((lines, resource, index) => {
       lines.push(`${index + 1}: ${resource.description}`);
       lines.push(resource.link);
@@ -31,8 +31,13 @@ routes
 
     res.status(200).json({
       response_type: "ephemeral",
-      text: `Hey <@${req.body.user_id}>, check out these resources related to \`${req.body.text}\`\n\n${results.join('\n')}`
+      text: `Check out these resources, you should <@${req.body.user_id}>. Related to \`${req.body.text}\`, they are.\n\n${results.join('\n')}`
     });
+  })
+  .post('/user/event', (req, res) => {
+    console.log(JSON.stringify(req.body, null, 2));
+
+    res.status(200).json({status: 'ok'});
   });
 
 export {

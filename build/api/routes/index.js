@@ -28,7 +28,7 @@ routes.get('/', function (req, res) {
     response_type: "ephemeral",
     text: "Hey, what up?"
   });
-}).post('/test', function (req, res) {
+}).post('/command/resource', function (req, res) {
   var results = resources.reduce(function (lines, resource, index) {
     lines.push(index + 1 + ": " + resource.description);
     lines.push(resource.link);
@@ -38,8 +38,12 @@ routes.get('/', function (req, res) {
 
   res.status(200).json({
     response_type: "ephemeral",
-    text: "Hey <@" + req.body.user_id + ">, check out these resources related to `" + req.body.text + "`\n\n" + results.join('\n')
+    text: "Check out these resources, you should <@" + req.body.user_id + ">. Related to `" + req.body.text + "`, they are.\n\n" + results.join('\n')
   });
+}).post('/user/event', function (req, res) {
+  console.log(JSON.stringify(req.body, null, 2));
+
+  res.status(200).json({ status: 'ok' });
 });
 
 exports.routes = routes;
