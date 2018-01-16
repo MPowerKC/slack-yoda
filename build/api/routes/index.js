@@ -36,9 +36,26 @@ routes.get('/', function (req, res) {
     return lines;
   }, []);
 
+  var actions = resources.map(function (resource, index) {
+    return {
+      name: 'like',
+      text: ":heart: " + (index + 1) + ": " + resource.description,
+      type: 'button',
+      value: "like|resource|" + (index + 1)
+    };
+  });
+
   res.status(200).json({
     response_type: "ephemeral",
-    text: "Check out these resources, you should <@" + req.body.user_id + ">. Related to `" + req.body.text + "`, they are.\n\n" + results.join('\n')
+    text: "Check out these resources, you should <@" + req.body.user_id + ">. Related to `" + req.body.text + "`, they are.\n\n" + results.join('\n'),
+    attachments: [{
+      text: "Find anything you liked?",
+      fallback: "Find anything you liked?",
+      callback_id: "resource-like",
+      color: "#33b50b",
+      attachment_type: "default",
+      actions: actions
+    }]
   });
 }).post('/user/event', function (req, res) {
   console.log(JSON.stringify(req.body, null, 2));
