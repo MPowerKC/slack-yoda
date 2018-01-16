@@ -23,9 +23,10 @@ routes.get('/', function (req, res) {
 }).post('/test', function (req, res) {
   console.log(JSON.stringify(req.headers, null, 2));
   console.log(JSON.stringify(req.body, null, 2));
+  var resources = "https://developer.mozilla.org/en-US/docs/Web/JavaScript\nhttps://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API";
   res.status(200).json({
     response_type: "ephemeral",
-    text: "Hey, what up?"
+    text: 'Hey @' + req.body.user_name + ', check out these resources related to "' + req.body.text + '"\n' + resources
   });
 });
 
