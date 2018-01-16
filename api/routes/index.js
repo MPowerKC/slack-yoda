@@ -18,7 +18,7 @@ routes
     let resources = "https://developer.mozilla.org/en-US/docs/Web/JavaScript\nhttps://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API"
     res.status(200).json({
       response_type: "ephemeral",
-      text: `Hey @${req.body.user_name}, check out these resources related to "${req.body.text}"\n${resources}`
+      text: `Hey <@${req.body.user_id}>, check out these resources related to \`${req.body.text}\`\n${resources}`
     });
   });
 
