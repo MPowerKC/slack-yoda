@@ -14,6 +14,7 @@ routes
   })
   .post('/test', (req, res) => {
     console.log(JSON.stringify(req.headers, null, 2))
+    console.log(JSON.stringify(req.body, null, 2))
     res.status(200).json({
       response_type: "ephemeral",
       text: "Hey, what up?"
