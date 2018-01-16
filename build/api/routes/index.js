@@ -16,7 +16,10 @@ var routes = _express2.default.Router();
 routes.get('/', function (req, res) {
   res.status(200).json({ message: "connected" });
 }).get('/test', function (req, res) {
-  res.status(200).json({ message: "test" });
+  res.status(200).json({
+    response_type: "ephemeral",
+    text: "Hey, what up?"
+  });
 });
 
 exports.routes = routes;
