@@ -18,6 +18,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var PORT = process.env.PORT || 5000;
 
-(0, _express2.default)().use(_bodyParser2.default.urlencoded({ extended: false })).use('/', _routes.routes).listen(PORT, function () {
+(0, _express2.default)().use(_bodyParser2.default.urlencoded({ extended: false })).use(_bodyParser2.default.json()).use('/', _routes.routes).listen(PORT, function () {
   return console.log('Server listening on port ' + PORT + '...');
 });

@@ -6,5 +6,6 @@ const PORT = process.env.PORT || 5000;
 
 express()
   .use(bodyParser.urlencoded({extended: false}))
+  .use(bodyParser.json())
   .use('/', routes)
   .listen(PORT, () => console.log(`Server listening on port ${PORT}...`));
