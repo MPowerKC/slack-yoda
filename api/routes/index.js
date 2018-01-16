@@ -6,7 +6,10 @@ routes
   .get('/', (req, res) => {
     res.status(200).json({message: "connected"});
   }).get('/test', (req, res) => {
-    res.status(200).json({message: "test"});
+    res.status(200).json({
+      response_type: "ephemeral",
+      text: "Hey, what up?"
+    });
   });
 
 export {
