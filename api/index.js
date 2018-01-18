@@ -1,6 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import { command, user } from './routes';
+import { command, resource, user } from './routes';
 import { exit } from './utils';
 
 const PORT = process.env.PORT || 5000;
@@ -13,5 +13,6 @@ express()
   .use(bodyParser.urlencoded({extended: false}))
   .use(bodyParser.json())
   .use('/api/command', command)
+  .use('/api/resources', resource)
   .use('/api/user', user)
   .listen(PORT, () => console.log(`Server listening on port ${PORT}...`));
