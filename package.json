@@ -4,6 +4,7 @@
   "description": "Slack app for an online course",
   "main": "api/index.js",
   "scripts": {
+    "postinstall": "npm run build",
     "start": "nodemon ./api/index.js --exec babel-node",
     "build": "babel api -d build/api",
     "serve": "node ./build/api/index.js",
